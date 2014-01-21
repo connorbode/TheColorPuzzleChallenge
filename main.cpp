@@ -1,11 +1,15 @@
 #include <iostream>
+#include "game.h"
+#include <string>
+
+using namespace std;
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
+	
+	Game g;
+	
+	cout << g.fu();
 	return 0;
 }
-
-/* this is a new change */
-
-/* this change is on test */
