@@ -12,6 +12,9 @@ public class Game {
 	private int emptyRow;
 	private int emptyCol;
 	
+	// the history of moves
+	private String history = "";
+	
 	
 	/* ==================================================
 	 * METHODS
@@ -69,6 +72,17 @@ public class Game {
 			
 			board[row][col] = token;
 		}
+	}
+	
+	/**
+	 * Creates a game with an existing history
+	 * @param input the configuration of the gameboard
+	 * @param history the moves that have already been used
+	 */
+	private Game(String input, String history) {
+
+		this(input);
+		this.history = history;
 	}
 	
 	/**
