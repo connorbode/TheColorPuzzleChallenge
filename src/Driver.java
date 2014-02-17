@@ -1,3 +1,4 @@
+import puzzle.*;
 
 public class Driver {
 
