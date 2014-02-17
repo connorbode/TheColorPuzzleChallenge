@@ -1,3 +1,5 @@
+package runners;
+
 import java.io.IOException;
 
 import puzzle.*;
