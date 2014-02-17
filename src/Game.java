@@ -1,8 +1,8 @@
 public class Game {
 	
-	/*
+	/* ==================================================
 	 * VARIABLES
-	 */
+	 * ================================================== */
 	
 	// the gameboard
 	private Tokens[][] board;
@@ -12,9 +12,9 @@ public class Game {
 	private int emptyCol;
 	
 	
-	/*
+	/* ==================================================
 	 * METHODS
-	 */
+	 * ================================================== */
 	
 	/**
 	 * Loads the gameboard from a file
