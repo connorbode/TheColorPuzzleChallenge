@@ -39,7 +39,7 @@ public class Game {
 	/**
 	 * Displays the gameboard in the console
 	 */
-	public void displayBoard() {
+	public void displayState() {
 		
 		// Notify that we are printing the game state
 		System.out.println("CURRENT GAME STATE: ");
@@ -73,7 +73,7 @@ public class Game {
 	 * Retrieves the gameboard array
 	 * @return the array of tokens
 	 */
-	public Tokens[][] getBoard() {
+	public Tokens[][] getState() {
 	
 		return new Tokens[3][5];
 	}
