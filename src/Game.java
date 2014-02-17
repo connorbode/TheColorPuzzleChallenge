@@ -41,7 +41,32 @@ public class Game {
 	 */
 	public void displayBoard() {
 		
+		// Notify that we are printing the game state
+		System.out.println("CURRENT GAME STATE: ");
+		System.out.println("--------------------");
 		
+		// Iterate columns
+		for(int i = 0; i < board.length; i++) {
+			
+			// The line to print for the gameboard
+			String line = "";
+			
+			// Iterate rows
+			for(int j = 0; j < board[i].length; j++) {
+				
+				// Get the current token representation
+				String token = board[i][j].toString().substring(0, 1);
+				
+				// Add the current representation to the line
+				line += token + " ";
+			}
+			
+			// Print the token
+			System.out.println(line);
+		}
+		
+		// Print a blank line
+		System.out.println();
 	}
 	
 	/**
