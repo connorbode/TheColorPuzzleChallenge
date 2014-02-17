@@ -76,7 +76,55 @@ public class Game {
 	 * @param direction the direction to move the token
 	 * @return true if the token was successfully moved
 	 */
-	public boolean move(Direction direction) {
+	public boolean move(Direction direction) throws InvalidMoveException {
+
+		
+		// Max gameboard positions
+		int left = 0;
+		int top = 0;
+		int bottom = board.length - 1;
+		int right = board[0].length - 1;
+		Tokens temp;
+		
+		switch(direction) {
+		
+		// Move up
+		case UP:
+			if(emptyRow == top) throw new InvalidMoveException("can't move up when at top of board");
+			temp = board[emptyRow - 1][emptyCol];
+			board[emptyRow - 1][emptyCol] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyRow -= 1;
+			break;
+			
+		// Move down
+		case DOWN:
+			if(emptyRow == bottom) throw new InvalidMoveException("can't move down when at bottom of board");
+			temp = board[emptyRow + 1][emptyCol];
+			board[emptyRow + 1][emptyCol] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyRow += 1;
+			break;
+		
+		// Move left
+		case LEFT:
+			if(emptyCol == left) throw new InvalidMoveException("can't move left when at left side of board");
+			temp = board[emptyRow][emptyCol - 1];
+			board[emptyRow][emptyCol - 1] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyCol -= 1;
+			break;
+			
+		// Move right
+		case RIGHT:
+			if(emptyCol == right) throw new InvalidMoveException("can't move right when at right side of board");
+			temp = board[emptyRow][emptyCol + 1];
+			board[emptyRow][emptyCol + 1] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyCol += 1;
+			break;
+			
+		}
 		
 		return true;
 	}
@@ -115,11 +163,51 @@ public class Game {
 	}
 	
 	/**
-	 * Retrieves the gameboard array
-	 * @return the array of tokens
+	 * Retrieves the gameboard's state in String form
+	 * @return the gameboard in a String
 	 */
-	public Tokens[][] getState() {
+	public String getState() {
+		
+		// Return string
+		String state = "";
 	
-		return new Tokens[3][5];
+		// Iterate rows
+		for(int i = 0; i < board.length; i++) {
+			
+			// Iterate columns
+			for(int j = 0; j < board[0].length; j++) {
+				
+				// Add the token to the string
+				state += board[i][j].toString().substring(0, 1).toLowerCase() + " ";
+			}
+		}
+		
+		// Remove the last space
+		state = state.substring(0, state.length() - 1);
+		return state;
+	}
+	
+	/**
+	 * Clones the current game
+	 * @return a new game that is exactly the same as the current game
+	 */
+	public Game clone() {
+		return new Game(this.getState());
+	}
+	
+	/**
+	 * Checks whether this game is equal to another game
+	 */
+	@Override
+	public boolean equals(Object other) {
+		
+		// Make sure the classes are both games
+		if(this.getClass() != other.getClass()) return false;
+		
+		// Typecast the other object into a game
+		Game otherGame = (Game) other;
+		
+		// Check to see whether their states are the same
+		return getState() == otherGame.getState();
 	}
 }
