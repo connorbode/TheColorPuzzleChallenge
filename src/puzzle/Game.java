@@ -206,7 +206,7 @@ public class Game {
 	 * @return a new game that is exactly the same as the current game
 	 */
 	public Game clone() {
-		return new Game(this.getState());
+		return new Game(this.getState(), history);
 	}
 	
 	/**
@@ -222,7 +222,12 @@ public class Game {
 		Game otherGame = (Game) other;
 		
 		// Check to see whether their states are the same
-		return getState() == otherGame.getState();
+		if(getState() != otherGame.getState()) return false;
+		
+		// Check that their histories are the same
+		if(history != otherGame.history) return false;
+		
+		return true;
 	}
 	
 	/**
