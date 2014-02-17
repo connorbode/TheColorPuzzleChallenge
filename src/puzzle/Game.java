@@ -82,8 +82,8 @@ public class Game {
 		// Max gameboard positions
 		int left = 0;
 		int top = 0;
-		int bottom = board.length;
-		int right = board[0].length;
+		int bottom = board.length - 1;
+		int right = board[0].length - 1;
 		
 		switch(direction) {
 		
