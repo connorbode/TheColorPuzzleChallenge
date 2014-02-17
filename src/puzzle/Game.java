@@ -6,7 +6,7 @@ public class Game {
 	 * ================================================== */
 	
 	// the gameboard
-	private Tokens[][] board;
+	private Tokens[][] board = new Tokens[3][5];
 	
 	// the coordinates of the empty token
 	private int emptyRow;
@@ -23,6 +23,9 @@ public class Game {
 	 * @param input 
 	 */
 	public Game(String input) {
+		
+		// remove whitespace from input
+		input = input.replace(" ",  "");
 		
 		char[] char_array = input.toCharArray();
 		for(int i = 0; i < char_array.length; i++)
