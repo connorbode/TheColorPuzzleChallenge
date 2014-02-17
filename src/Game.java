@@ -15,15 +15,15 @@ public class Game {
 	/* ==================================================
 	 * METHODS
 	 * ================================================== */
-	
+
 	/**
-	 * Loads the gameboard from a file
-	 * @param filePath the path to the game txt file
-	 * @return true if load successful
+	 * Create a new game given the string of input.  
+	 * Sets emptyRow & emptyCol when finds 'e'
+	 * @param input 
 	 */
-	public boolean load(String filePath) {
+	public Game(String input) {
 		
-		return true;
+		
 	}
 	
 	/**
@@ -40,6 +40,7 @@ public class Game {
 	 * Displays the gameboard in the console
 	 */
 	public void displayBoard() {
+		
 		
 	}
 	
