@@ -1,4 +1,0 @@
-TheColorPuzzleChallenge
-=======================
-
-AI project
