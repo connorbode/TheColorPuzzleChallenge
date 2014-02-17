@@ -8,10 +8,11 @@ import puzzle.*;
 public class Tests {
 
 	@Test
-	public void moveUpTest() {
-		
-		String board = "e r r r r r b w b b w y b r y";
-		Game game = new Game();
+	public void getStateTest() {
+	
+		String initialState = "e r r r r r b w b b w y b r y";
+		Game game = new Game(initialState);
+		assertEquals("get state works", game.getState(), initialState);
 		
 	}
 

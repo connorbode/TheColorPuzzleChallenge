@@ -151,11 +151,27 @@ public class Game {
 	}
 	
 	/**
-	 * Retrieves the gameboard array
-	 * @return the array of tokens
+	 * Retrieves the gameboard's state in String form
+	 * @return the gameboard in a String
 	 */
-	public Tokens[][] getState() {
+	public String getState() {
+		
+		// Return string
+		String state = "";
 	
-		return new Tokens[3][5];
+		// Iterate rows
+		for(int i = 0; i < board.length; i++) {
+			
+			// Iterate columns
+			for(int j = 0; j < board[0].length; j++) {
+				
+				// Add the token to the string
+				state += board[i][j].toString().substring(0, 1).toLowerCase() + " ";
+			}
+		}
+		
+		// Remove the last space
+		state = state.substring(0, state.length() - 1);
+		return state;
 	}
 }
