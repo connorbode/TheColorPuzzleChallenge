@@ -72,6 +72,9 @@ public class Game {
 			
 			board[row][col] = token;
 		}
+		
+		// Set the history
+		history = getPosition();
 	}
 	
 	/**
@@ -140,6 +143,9 @@ public class Game {
 			
 		}
 		
+		// Add the position to the history
+		history += getPosition();
+		
 		return true;
 	}
 
@@ -151,6 +157,8 @@ public class Game {
 		// Notify that we are printing the game state
 		System.out.println("CURRENT GAME STATE: ");
 		System.out.println("--------------------");
+		System.out.println("history: " + history);
+		System.out.println("gameboard:");
 		
 		// Iterate columns
 		for(int i = 0; i < board.length; i++) {
