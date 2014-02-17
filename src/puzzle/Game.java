@@ -84,32 +84,44 @@ public class Game {
 		int top = 0;
 		int bottom = board.length - 1;
 		int right = board[0].length - 1;
+		Tokens temp;
 		
 		switch(direction) {
 		
 		// Move up
 		case UP:
 			if(emptyRow == top) throw new InvalidMoveException("can't move up when at top of board");
-			Tokens temp;
 			temp = board[emptyRow - 1][emptyCol];
 			board[emptyRow - 1][emptyCol] = Tokens.EMPTY;
 			board[emptyRow][emptyCol] = temp;
-			emptyRow = emptyRow - 1;
+			emptyRow -= 1;
 			break;
 			
 		// Move down
 		case DOWN:
 			if(emptyRow == bottom) throw new InvalidMoveException("can't move down when at bottom of board");
+			temp = board[emptyRow + 1][emptyCol];
+			board[emptyRow + 1][emptyCol] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyRow += 1;
 			break;
 		
 		// Move left
 		case LEFT:
 			if(emptyCol == left) throw new InvalidMoveException("can't move left when at left side of board");
+			temp = board[emptyRow][emptyCol - 1];
+			board[emptyRow][emptyCol - 1] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyCol -= 1;
 			break;
 			
 		// Move right
 		case RIGHT:
 			if(emptyCol == right) throw new InvalidMoveException("can't move right when at right side of board");
+			temp = board[emptyRow][emptyCol + 1];
+			board[emptyRow][emptyCol + 1] = Tokens.EMPTY;
+			board[emptyRow][emptyCol] = temp;
+			emptyCol += 1;
 			break;
 			
 		}

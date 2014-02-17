@@ -57,5 +57,35 @@ public class Tests {
 		game.move(Direction.UP);
 		assertEquals(game.getState(), expectedState);
 	}
+	
+	@Test
+	public void successfulMoveDownTest() throws InvalidMoveException {
+
+		String initialState = "r r r r r r e w b b w y b r y";
+		String expectedState = "r r r r r r y w b b w e b r y";
+		Game game = new Game(initialState);
+		game.move(Direction.DOWN);
+		assertEquals(expectedState, game.getState());
+	}
+	
+	@Test
+	public void successfulMoveLeftTest() throws InvalidMoveException {
+
+		String initialState = "r e b b b r b b b b r b b b b";
+		String expectedState = "e r b b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		game.move(Direction.LEFT);
+		assertEquals(expectedState, game.getState());
+	}
+	
+	@Test
+	public void successfulMoveRightTest() throws InvalidMoveException {
+
+		String initialState = "r e b b b r b b b b r b b b b";
+		String expectedState = "r b e b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		game.move(Direction.RIGHT);
+		assertEquals(expectedState, game.getState());
+	}
 
 }
