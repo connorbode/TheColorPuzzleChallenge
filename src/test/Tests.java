@@ -106,5 +106,20 @@ public class Tests {
 		
 		assert(game.equals(game2));
 	}
+	
+	@Test
+	public void getPositionTest() {
+		String initialState = "r e b b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		assertEquals("B", game.getPosition());
+		
+		initialState = "e b b b b r b b b b r b b b b";
+		game = new Game(initialState);
+		assertEquals("A", game.getPosition());
+		
+		initialState = "r r b b b r b b b b r b b b e";
+		game = new Game(initialState);
+		assertEquals("O", game.getPosition());
+	}
 
 }

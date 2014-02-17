@@ -210,4 +210,26 @@ public class Game {
 		// Check to see whether their states are the same
 		return getState() == otherGame.getState();
 	}
+	
+	/**
+	 * Provides a string representaiton of the game
+	 */
+	@Override
+	public String toString() {
+		
+		return getState();
+	}
+	
+	/**
+	 * Get empty position
+	 * @return the letter position of the empty token
+	 */
+	public String getPosition() {
+		
+		// Get numeric position
+		int numericPosition = (emptyRow * 5) + emptyCol;
+		char character = (char) (numericPosition + 65);
+		
+		return String.valueOf(character);
+	}
 }
