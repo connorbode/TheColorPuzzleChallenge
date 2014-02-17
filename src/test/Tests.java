@@ -87,5 +87,24 @@ public class Tests {
 		game.move(Direction.RIGHT);
 		assertEquals(expectedState, game.getState());
 	}
+	
+	@Test
+	public void cloneTest() {
+		
+		String initialState = "r e b b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		Game game2 = game.clone();
+		assertEquals(game.getState(), game2.getState());
+	}
+	
+	@Test
+	public void equalsTest() {
+
+		String initialState = "r e b b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		Game game2 = game.clone();
+		
+		assert(game.equals(game2));
+	}
 
 }

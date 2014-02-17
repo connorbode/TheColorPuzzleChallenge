@@ -186,4 +186,28 @@ public class Game {
 		state = state.substring(0, state.length() - 1);
 		return state;
 	}
+	
+	/**
+	 * Clones the current game
+	 * @return a new game that is exactly the same as the current game
+	 */
+	public Game clone() {
+		return new Game(this.getState());
+	}
+	
+	/**
+	 * Checks whether this game is equal to another game
+	 */
+	@Override
+	public boolean equals(Object other) {
+		
+		// Make sure the classes are both games
+		if(this.getClass() != other.getClass()) return false;
+		
+		// Typecast the other object into a game
+		Game otherGame = (Game) other;
+		
+		// Check to see whether their states are the same
+		return getState() == otherGame.getState();
+	}
 }
