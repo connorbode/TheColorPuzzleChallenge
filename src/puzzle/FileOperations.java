@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class FileOperations {
-	
+
+	//Opens the specified file from filePath, read each line and store them in an ArrayList
 	public static ArrayList load(String filePath) throws IOException
 	{
 		String line;
