@@ -34,5 +34,21 @@ public class FileOperations {
 			puzzle.displayState();
 		}
 	}
+	
+	/**
+	 * Writes a line of text to a given file
+	 * @param filePath the path to the file
+	 * @param text the text to write to the file
+	 * @throws IOException error on accessing the file
+	 */
+	public static void writeLineToFile(String filePath, String text) throws IOException {
+		
+		// Create the writer
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
+		
+		// Write a line to the file
+		out.println(text);
+		out.close();
+	}
 
 }
