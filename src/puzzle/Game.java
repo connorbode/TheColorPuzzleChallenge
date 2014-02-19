@@ -230,7 +230,7 @@ public class Game {
 		Game otherGame = (Game) other;
 		
 		// Check to see whether their states are the same
-		if(getState() != otherGame.getState()) return false;
+		if(!getState().equals(otherGame.getState())) return false;
 		
 		// Check that their histories are the same
 		if(history != otherGame.history) return false;

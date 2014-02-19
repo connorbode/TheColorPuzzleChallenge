@@ -89,21 +89,21 @@ public class Tests {
 	}
 	
 	@Test
-	public void cloneTest() {
-		
-		String initialState = "r e b b b r b b b b r b b b b";
-		Game game = new Game(initialState);
-		Game game2 = game.clone();
-		assertEquals(game.getState(), game2.getState());
-	}
-	
-	@Test
 	public void equalsTest() {
 
 		String initialState = "r e b b b r b b b b r b b b b";
 		Game game = new Game(initialState);
 		Game game2 = game.clone();
 		
+		assertTrue(game.equals(game2));
+	}
+	
+	@Test
+	public void cloneTest() {
+		
+		String initialState = "r e b b b r b b b b r b b b b";
+		Game game = new Game(initialState);
+		Game game2 = game.clone();
 		assertTrue(game.equals(game2));
 	}
 	
