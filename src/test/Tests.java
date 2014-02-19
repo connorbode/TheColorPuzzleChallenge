@@ -104,7 +104,7 @@ public class Tests {
 		Game game = new Game(initialState);
 		Game game2 = game.clone();
 		
-		assert(game.equals(game2));
+		assertTrue(game.equals(game2));
 	}
 	
 	@Test
@@ -121,5 +121,20 @@ public class Tests {
 		game = new Game(initialState);
 		assertEquals("O", game.getPosition());
 	}
+	
+	@Test
+	public void goalStateTest() {
+		String initialState = "r w y r b r b r b e r w y r b";
+		Game game = new Game(initialState);
+		assertTrue(game.goalStateReached());
+	}	
+	
+	@Test
+	public void nonGoalStateTest() {
+		String initialState = "r r b b b r b b b b r b b b e";
+		Game game = new Game(initialState);
+		assertFalse(game.goalStateReached());
+	}
+
 
 }
