@@ -259,4 +259,15 @@ public class Game {
 		
 		return String.valueOf(character);
 	}
+	
+	/**
+	 * Verifies if the current state is a goal state
+	 * @return true if it is a goal state, false otherwise
+	 */
+	public boolean goalStateReached()
+	{
+		//verifies the symmetry of the top and bottom row
+		return (board[0][0]==board[2][0] && board[0][1]==board[2][1] && board[0][2]==board[2][2]
+				&& board[0][3]==board[2][3] && board[0][4]==board[2][4]);
+	}
 }
