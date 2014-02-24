@@ -157,6 +157,7 @@ public class Game {
 		// Notify that we are printing the game state
 		System.out.println("CURRENT GAME STATE: ");
 		System.out.println("--------------------");
+		System.out.println("is goal state? " + (goalStateReached() ? "yes" : "no"));
 		System.out.println("history: " + history);
 		System.out.println("gameboard:");
 		
