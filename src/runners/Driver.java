@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import puzzle.*;
 
+/**
+ * Loads input from a text file & processes using the puzzle runner
+ *
+ */
 public class Driver {
 
 	public static void main(String[] args) {
