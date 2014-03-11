@@ -1,10 +1,12 @@
-package puzzle;
+package utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.*;
+
+import search.*;
 
 public class FileOperations {
 
@@ -22,17 +24,6 @@ public class FileOperations {
 		
 		textReader.close();
 		return gameConfigs;
-	}
-	
-	public static void runner(String filePath) throws IndexOutOfBoundsException, IOException
-	{
-		ArrayList gameConfigs = load(filePath);
-		
-		for(int i = 0; i < gameConfigs.size()-1; i++)
-		{
-			Game puzzle = new Game((String)gameConfigs.get(i));
-			puzzle.displayState();
-		}
 	}
 	
 	/**

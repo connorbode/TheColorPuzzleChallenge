@@ -14,6 +14,7 @@ public class Game {
 	
 	// the history of moves
 	private String history = "";
+	private String moveHistory = "";
 	
 	
 	/* ==================================================
@@ -82,10 +83,11 @@ public class Game {
 	 * @param input the configuration of the gameboard
 	 * @param history the moves that have already been used
 	 */
-	private Game(String input, String history) {
+	private Game(String input, String history, String moveHistory) {
 
 		this(input);
 		this.history = history;
+		this.moveHistory = moveHistory;
 	}
 	
 	/**
@@ -112,6 +114,7 @@ public class Game {
 			board[emptyRow - 1][emptyCol] = Tokens.EMPTY;
 			board[emptyRow][emptyCol] = temp;
 			emptyRow -= 1;
+			moveHistory += "u";
 			break;
 			
 		// Move down
@@ -121,6 +124,7 @@ public class Game {
 			board[emptyRow + 1][emptyCol] = Tokens.EMPTY;
 			board[emptyRow][emptyCol] = temp;
 			emptyRow += 1;
+			moveHistory += "d";
 			break;
 		
 		// Move left
@@ -130,6 +134,7 @@ public class Game {
 			board[emptyRow][emptyCol - 1] = Tokens.EMPTY;
 			board[emptyRow][emptyCol] = temp;
 			emptyCol -= 1;
+			moveHistory += "l";
 			break;
 			
 		// Move right
@@ -139,6 +144,7 @@ public class Game {
 			board[emptyRow][emptyCol + 1] = Tokens.EMPTY;
 			board[emptyRow][emptyCol] = temp;
 			emptyCol += 1;
+			moveHistory += "r";
 			break;
 			
 		}
@@ -155,11 +161,11 @@ public class Game {
 	public void displayState() {
 		
 		// Notify that we are printing the game state
-		System.out.println("CURRENT GAME STATE: ");
-		System.out.println("--------------------");
-		System.out.println("is goal state? " + (goalStateReached() ? "yes" : "no"));
-		System.out.println("history: " + history);
-		System.out.println("gameboard:");
+//		System.out.println("CURRENT GAME STATE: ");
+//		System.out.println("--------------------");
+//		System.out.println("is goal state? " + (goalStateReached() ? "yes" : "no"));
+//		System.out.println("history: " + history);
+//		System.out.println("gameboard:");
 		
 		// Iterate columns
 		for(int i = 0; i < board.length; i++) {
@@ -174,7 +180,11 @@ public class Game {
 				String token = board[i][j].toString().substring(0, 1);
 				
 				// Add the current representation to the line
-				line += token + " ";
+				if(token.equals("E")) {
+					line += "  ";
+				} else {
+					line += token + " ";
+				}
 			}
 			
 			// Print the token
@@ -215,7 +225,7 @@ public class Game {
 	 * @return a new game that is exactly the same as the current game
 	 */
 	public Game clone() {
-		return new Game(this.getState(), history);
+		return new Game(this.getState(), history, moveHistory);
 	}
 	
 	/**
@@ -270,5 +280,21 @@ public class Game {
 		//verifies the symmetry of the top and bottom row
 		return (board[0][0]==board[2][0] && board[0][1]==board[2][1] && board[0][2]==board[2][2]
 				&& board[0][3]==board[2][3] && board[0][4]==board[2][4]);
+	}
+	
+	/**
+	 * Returns the node's history
+	 * @return the history of the node
+	 */
+	public String getHistory() {
+		return history;
+	}
+	
+	/**
+	 * Gets a history of the moves made
+	 * @return
+	 */
+	public String getMoveHistory() {
+		return moveHistory;
 	}
 }

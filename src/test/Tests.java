@@ -89,10 +89,11 @@ public class Tests {
 	}
 	
 	@Test
-	public void equalsTest() {
+	public void equalsTest() throws InvalidMoveException {
 
 		String initialState = "r e b b b r b b b b r b b b b";
 		Game game = new Game(initialState);
+		game.move(Direction.DOWN);
 		Game game2 = game.clone();
 		
 		assertTrue(game.equals(game2));
