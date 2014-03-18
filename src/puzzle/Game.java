@@ -75,7 +75,7 @@ public class Game {
 		}
 		
 		// Set the history
-		history = getPosition();
+		//		history = getPosition();
 	}
 	
 	/**

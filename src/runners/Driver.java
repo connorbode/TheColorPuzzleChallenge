@@ -16,12 +16,14 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		try {
-			ArrayList gameConfigs = FileOperations.load("files/level3.txt");
+			ArrayList gameConfigs = FileOperations.load("files/inputA.txt");
 			
 			ASearch search = new ASearch(new BetterHeuristic());
-			
+			String ans = null;
 			long totalTime = 0;
-			for(int i = 0; i < gameConfigs.size() - 1; i++)
+			String filePath = "out.txt";
+			int totalMoves = 0;
+			for(int i = 0; i < gameConfigs.size(); i++)
 			{
 				System.out.println("PUZZLE " + (i+1));
 				System.out.println();
@@ -35,12 +37,19 @@ public class Driver {
 				long endTime = System.currentTimeMillis();
 				long timeElapsed =  (endTime - startTime);
 				totalTime += timeElapsed;
-				System.out.println("SOLUTION HISTORY: " + solution.getHistory());
+				ans = solution.getHistory();
+				System.out.println("SOLUTION HISTORY: " + ans);
 				System.out.println("SOLUTION MOVE HISTORY: " + solution.getMoveHistory());
 				System.out.println("SOLUTION TIME: " + timeElapsed + "ms");
 				System.out.println("TOTAL TIME SO FAR: " + totalTime + "ms");
 				System.out.println();
+				
+				FileOperations.writeLineToFile(filePath, solution.getHistory());
+				FileOperations.writeLineToFile(filePath, timeElapsed + "ms");
+				totalMoves += solution.getHistory().length();
 			}
+			FileOperations.writeLineToFile(filePath,  totalMoves + "");
+			FileOperations.writeLineToFile(filePath, totalTime + "ms");
 			System.out.println("TOTAL TIME: " + totalTime + "ms");
 			
 		} catch (IndexOutOfBoundsException | IOException e) {

@@ -30,6 +30,9 @@ public class Terminal {
 			// Print gameboard
 			game.displayState();
 			
+			System.out.println(game.getHistory());
+			System.out.println(game.getMoveHistory());
+			
 			// Get input
 			input = keyboard.nextLine();
 			
