@@ -16,12 +16,12 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		try {
-			ArrayList gameConfigs = FileOperations.load("files/inputA.txt");
+			ArrayList gameConfigs = FileOperations.load("files/sample-puzzles/level2/problem.txt");
 			
-			ASearch search = new ASearch(new BetterHeuristic());
+			ASearch search = new ASearch(new EmptySpaceCornerHeuristic());
 			String ans = null;
 			long totalTime = 0;
-			String filePath = "out.txt";
+			String filePath = "level2.txt";
 			int totalMoves = 0;
 			for(int i = 0; i < gameConfigs.size(); i++)
 			{
