@@ -9,6 +9,7 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
     int twoMovesForTwoColsPoints = 4;
     int threeMovesForTwoColsPoints = 3;
     int fourMovesForTwoColsPoints = 2;
+    int fiveMovesForTwoColsPoints = 1;
     
     int value = 0;
     
@@ -33,6 +34,35 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
       if(bottomChar == 'e' && midChar == topChar) {
     	  value += oneMoveForOneColPoints;
       }
+      
+      // 1 move right / left = column symmetry
+//      if(topChar == 'e') {
+//    	  if(i > 0) {
+//    		  char leftChar = input.charAt(i-1);
+//    		  if(leftChar == bottomChar) {
+//    			  value += oneMoveForOneColPoints;
+//    		  }
+//    	  }
+//    	  if(i < 4) {
+//    		  char rightChar = input.charAt(i+1);
+//    		  if(rightChar == bottomChar) {
+//    			  value += oneMoveForOneColPoints;
+//    		  }
+//    	  }
+//      } else if(bottomChar == 'e') {
+//    	  if(i > 0) {
+//    		  char leftChar = input.charAt(i+9);
+//    		  if(leftChar == topChar) {
+//    			  value += oneMoveForOneColPoints;
+//    		  }
+//    	  }
+//    	  if(i < 4) {
+//    		  char rightChar = input.charAt(i+11);
+//    		  if(rightChar == topChar) {
+//    			  value += oneMoveForOneColPoints;
+//    		  }
+//    	  }
+//      }
       
       // 1 move left + 1 move up / down = 2 more columns symmetry?
       if(i != 0) {
@@ -70,7 +100,6 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
       // 1 move down + 1 move left/right + 1 move up 
       // OR 1 move up + 1 move left/right + 1 move down
       
-      
       if(midChar == 'e') {
     	if(i > 0) {
           	char topLeftChar = input.charAt(i-1);
@@ -103,6 +132,49 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
     			value += fourMovesForTwoColsPoints;
     		}
     	}
+      }
+      
+      /*
+       * B B R R W 
+       * B R B R B 
+       * B W   R R 
+       * 
+       * For puzzles like this:
+       *  - one move up, left, down, right, up & symmetry
+       */
+      if(i > 0) {
+    	  char topLeftChar = input.charAt(i-1);
+    	  char midLeftChar = input.charAt(i+4);
+    	  char bottomLeftChar = input.charAt(i+9);
+    	  
+    	  if(bottomChar == 'e') {
+    		  /* Variations to try :
+    		   * - && bottomLeftChar != topLeftChar
+    		   * - && bottomLeftChar != topChar
+    		   */
+    		  if(topLeftChar == midChar && midLeftChar == topChar) {
+    			  value += fiveMovesForTwoColsPoints;
+    		  }
+    	  } else if (topChar == 'e') {
+    		  if(bottomLeftChar == midChar && midLeftChar == bottomChar) {
+    			  value += fiveMovesForTwoColsPoints;
+    		  }
+    	  }
+      }
+      if(i < 4) {
+    	  char topRightChar = input.charAt(i+1);
+    	  char midRightChar = input.charAt(i+6);
+    	  char bottomRightChar = input.charAt(i+11);
+    	  
+    	  if(bottomChar == 'e') {
+    		  if(midRightChar == topChar && topRightChar == midChar) {
+    			  value += fiveMovesForTwoColsPoints;
+    		  }
+    	  } else if (topChar == 'e') {
+    		  if(bottomRightChar == midChar && midRightChar == bottomChar) {
+    			  value += fiveMovesForTwoColsPoints;
+    		  }
+    	  }
       }
     }
     
