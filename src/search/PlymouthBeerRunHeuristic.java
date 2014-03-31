@@ -3,6 +3,12 @@ package search;
 public class PlymouthBeerRunHeuristic extends Heuristic {
 
   public int evaluate(String input) {
+	  
+	int perColPoints = 6;
+	int oneMoveForOneColPoints = 4;
+    int twoMovesForTwoColsPoints = 4;
+    int threeMovesForTwoColsPoints = 3;
+    int fourMovesForTwoColsPoints = 2;
     
     int value = 0;
     
@@ -16,20 +22,19 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
 
       // column symmetry?
       if(topChar == bottomChar)
-        value += 2;
+        value += perColPoints;
 
       // 1 move down = column symmetry ?
       if(topChar == 'e' && midChar == bottomChar) {
-    	  value += 1;
+    	  value += oneMoveForOneColPoints;
       }
       
       // 1 move up = column symmetry?
       if(bottomChar == 'e' && midChar == topChar) {
-    	  value += 1;
+    	  value += oneMoveForOneColPoints;
       }
       
       // 1 move left + 1 move up / down = 2 more columns symmetry?
-      int twoMovesForTwoColsPoints = 3;
       if(i != 0) {
 		  char midLeftChar = input.charAt(i+4);
 		  char topLeftChar = input.charAt(i-1);
@@ -51,9 +56,21 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
     	  }
       }
       
+
+      /* right, down, left, up will yield two solved cols
+       * 
+       * Example config
+       * 
+       * B B R R W 
+       * B   B R B 
+       * B R W R R 
+       */
+      
+      
       // 1 move down + 1 move left/right + 1 move up 
       // OR 1 move up + 1 move left/right + 1 move down
-      int threeMovesForTwoColsPoints = 2;
+      
+      
       if(midChar == 'e') {
     	if(i > 0) {
           	char topLeftChar = input.charAt(i-1);
@@ -64,6 +81,10 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
           		value += threeMovesForTwoColsPoints;
           	} else if (bottomLeftChar == midLeftChar && topLeftChar == bottomChar) {
           		value += threeMovesForTwoColsPoints;
+          	} else if (bottomChar == topLeftChar && midLeftChar == topChar) {
+          		value += fourMovesForTwoColsPoints;
+          	} else if (topChar == bottomLeftChar && midLeftChar == bottomChar) {
+          		value += fourMovesForTwoColsPoints;
           	}
     	}
     	
@@ -76,6 +97,10 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
     			value += threeMovesForTwoColsPoints;
     		} else if(bottomRightChar == midRightChar && bottomChar == topRightChar) {
     			value += threeMovesForTwoColsPoints;
+    		} else if(topRightChar == bottomChar && midRightChar == topChar) {
+    			value += fourMovesForTwoColsPoints;
+    		} else if(topChar == bottomRightChar && bottomChar == midRightChar) {
+    			value += fourMovesForTwoColsPoints;
     		}
     	}
       }
