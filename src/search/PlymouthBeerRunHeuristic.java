@@ -176,6 +176,43 @@ public class PlymouthBeerRunHeuristic extends Heuristic {
     		  }
     	  }
       }
+      
+      /*
+       * B B R R B 
+       * W R B R W 
+       * B B   R R 
+       */
+      if(i < 4) {
+    	  char topRightChar = input.charAt(i+1);
+    	  char midRightChar = input.charAt(i+6);
+    	  char bottomRightChar = input.charAt(i+11);
+    	  
+    	  if(bottomChar == 'e') {
+    		  if(topChar == bottomRightChar && topRightChar == midRightChar) {
+    			  value += twoMovesForTwoColsPoints;
+    		  }
+    	  } else if (topChar == 'e') {
+    		  if (bottomChar == topRightChar && bottomRightChar == midRightChar) {
+    			  value += twoMovesForTwoColsPoints;
+    		  }
+    	  }
+      }
+      if(i > 0) {
+    	  char topLeftChar = input.charAt(i-1);
+    	  char midLeftChar = input.charAt(i+4);
+    	  char bottomLeftChar = input.charAt(i+9);
+    	  
+    	  if (bottomChar == 'e') {
+    		  if (topChar == bottomLeftChar && topLeftChar == midLeftChar) {
+    			  value += twoMovesForTwoColsPoints;
+    		  }
+    	  } else if (topChar == 'e') {
+    		  if (bottomChar == topLeftChar && bottomLeftChar == midLeftChar) {
+    			  value += twoMovesForTwoColsPoints;
+    		  }
+    	  }
+    	  
+      }
     }
     
     
