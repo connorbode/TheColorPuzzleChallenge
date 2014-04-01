@@ -118,6 +118,6 @@ public class ASearch {
 	 * @return the cost to get to that state
 	 */
 	private int costToNode(String history) {
-		return history.length()-1;
+		return 1;
 	}
 }

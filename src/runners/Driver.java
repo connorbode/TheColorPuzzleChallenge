@@ -16,12 +16,12 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		try {
-			ArrayList gameConfigs = FileOperations.load("files/sample-puzzles/level2/problem.txt");
+			ArrayList gameConfigs = FileOperations.load("files/level4.txt");
 			
-			ASearch search = new ASearch(new EmptySpaceCornerHeuristic());
+			ASearch search = new ASearch(new EmptySpaceHeuristic());
 			String ans = null;
 			long totalTime = 0;
-			String filePath = "level2.txt";
+			String filePath = "level4.txt";
 			int totalMoves = 0;
 			for(int i = 0; i < gameConfigs.size(); i++)
 			{
@@ -51,6 +51,7 @@ public class Driver {
 			FileOperations.writeLineToFile(filePath,  totalMoves + "");
 			FileOperations.writeLineToFile(filePath, totalTime + "ms");
 			System.out.println("TOTAL TIME: " + totalTime + "ms");
+			System.out.println("TOTAL MOVES: " + totalMoves + " moves");
 			
 		} catch (IndexOutOfBoundsException | IOException e) {
 			// TODO Auto-generated catch block
